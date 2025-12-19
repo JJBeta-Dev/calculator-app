@@ -1,5 +1,7 @@
 import { useState } from "react";
 
+const MAX_DIGITS = 18;
+
 export const useCalculator = () => {
   const [display, setDisplay] = useState("0");
   const [previousValue, setPreviousValue] = useState(null);
@@ -15,6 +17,9 @@ export const useCalculator = () => {
 
     if (num === "." && display.includes(".")) return;
     if (display === "0" && num === "0") return;
+
+    const digitCount = display.replace(".", "").length;
+    if (digitCount >= MAX_DIGITS && num !== ".") return;
 
     if (display === "0" && num !== ".") {
       setDisplay(num);
