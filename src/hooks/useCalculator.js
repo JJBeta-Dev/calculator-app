@@ -9,6 +9,15 @@ export const useCalculator = () => {
   const [waitingForNumber, setWaitingForNumber] = useState(false);
 
   const inputNumber = (num) => {
+    // Si hay error, cualquier número inicia una nueva cuenta limpia
+    if (display === "Error") {
+      setDisplay(num === "." ? "0." : num);
+      setPreviousValue(null);
+      setOperator(null);
+      setWaitingForNumber(false);
+      return;
+    }
+
     if (waitingForNumber) {
       setDisplay(num === "." ? "0." : num);
       setWaitingForNumber(false);
@@ -40,6 +49,8 @@ export const useCalculator = () => {
   };
 
   const inputOperator = (op) => {
+    if (display === "Error") return;
+
     if (operator !== null && previousValue !== null && !waitingForNumber) {
       const result = doCalculation(previousValue, Number(display), operator);
       if (result === "Error") {
@@ -59,6 +70,7 @@ export const useCalculator = () => {
   };
 
   const calculate = () => {
+    if (display === "Error") return;
     if (operator === null || previousValue === null) return;
 
     const result = doCalculation(previousValue, Number(display), operator);
