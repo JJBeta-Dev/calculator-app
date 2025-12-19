@@ -1,5 +1,3 @@
-import React from "react";
-
 const keys = [
   { label: "7", type: "num" },
   { label: "8", type: "num" },
@@ -27,39 +25,39 @@ const keys = [
 
 const styles = {
   num: `
-    bg-[var(--color-key-num-bg)]
-    text-[var(--color-text-dark)]
+    bg-key-num-bg
+    text-text-dark
     shadow-[0_4px_0_var(--color-key-num-shadow)]
     active:shadow-[0_2px_0_var(--color-key-num-shadow)]
   `,
   op: `
-    bg-[var(--color-key-num-bg)]
-    text-[var(--color-text-dark)]
+    bg-key-num-bg
+    text-text-dark
     shadow-[0_4px_0_var(--color-key-num-shadow)]
     active:shadow-[0_2px_0_var(--color-key-num-shadow)]
   `,
   del: `
-    bg-[var(--color-key-del-bg)]
-    text-[var(--color-text-light)]
+    bg-key-del-bg
+    text-text-light
     shadow-[0_4px_0_var(--color-key-del-shadow)]
     active:shadow-[0_2px_0_var(--color-key-del-shadow)]
   `,
   reset: `
-    bg-[var(--color-key-del-bg)]
-    text-[var(--color-text-light)]
+    bg-key-del-bg
+    text-text-light
     shadow-[0_4px_0_var(--color-key-del-shadow)]
     active:shadow-[0_2px_0_var(--color-key-del-shadow)]
   `,
   eq: `
-    bg-[var(--color-key-eq-bg)]
-    text-[var(--color-text-eq)]
+    bg-key-eq-bg
+    text-text-eq
     shadow-[0_4px_0_var(--color-key-eq-shadow)]
     active:shadow-[0_2px_0_var(--color-key-eq-shadow)]
   `,
 };
 const Keypad = ({ onKeyPress }) => {
   return (
-    <div className={`grid grid-cols-4 gap-3 rounded-2xl bg-[var(--color-keypad-bg)] p-4`}>
+    <div className={`grid grid-cols-4 gap-3 rounded-2xl bg-keypad-bg p-4`}>
       {keys.map(({ label, type, colSpan }) => (
         <button
           onClick={() => onKeyPress(label, type)}
